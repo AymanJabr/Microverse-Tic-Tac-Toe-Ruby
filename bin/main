@@ -2,12 +2,10 @@
 
 puts "\n\n\nTIC-TAC-TOE Game\n\n"
 
-puts "Player 1, enter your name:"
+puts 'Player 1, enter your name:'
 player_one_name = gets.chomp
-puts "Player 2, enter your name:"
+puts 'Player 2, enter your name:'
 player_two_name = gets.chomp
-
-
 
 puts "Current Score: \n\t\t Player #{player_one_name}: 0\n\t\t Player #{player_two_name}: 0\n\n"
 
@@ -27,7 +25,7 @@ puts "Player #{player_one_name} has chosen input #{current_player_input}, contin
 player_continues = gets.chomp
 puts "player has decided chosen #{player_continues}"
 
-puts "invalid move selected, please enter a valid number"
+puts 'invalid move selected, please enter a valid number'
 
 current_player_input = gets.chomp
 
@@ -41,7 +39,6 @@ puts '--------- '
 puts '  | O |   '
 puts '--------- '
 puts '  |   |   '
-
 
 puts "Turn of Player #{player_two_name} \n\n"
 
@@ -86,7 +83,6 @@ puts '--------- '
 puts '  | O |   '
 puts '--------- '
 puts '  |   | O '
-
 
 puts "Game finished, #{player_one_name} has won"
 
