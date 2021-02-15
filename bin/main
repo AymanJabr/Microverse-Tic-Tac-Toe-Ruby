@@ -1,2 +1,39 @@
 #!/usr/bin/env ruby
-puts 'Hello World!'
+
+some_variable =0
+player = "X"
+
+puts "\n\n\nTIC-TAC-TOE Game\n\n"
+
+puts "Current Score: \n\t\t Player X: #{some_variable}\n\t\t Player O: #{some_variable}\n\n"
+
+puts "Turn of Player #{player} \n\n"
+
+puts "Choose were to place mark by selecting one of the number from 1-9, as shown below:"
+puts "1 | 2 | 3 "
+puts "--------- "
+puts "4 | 5 | 6 "
+puts "--------- "
+puts "7 | 8 | 9 "
+
+current_player_input = gets.chomp 
+
+puts "Player #{player} has chosen input #{current_player_input}, continue? Y/N"
+
+player_continues = gets.chomp 
+    #if true continue, if not ask user for new input
+
+
+#Check if input is valid
+
+#Check if valid move has been made
+
+puts "X |   |   "
+puts "--------- "
+puts "  | O |   "
+puts "--------- "
+puts "  |   |   " 
+
+#Check if game has ended, if not restart from line 10
+
+#If game has ended, show score, and ask if players want to play another round, else exit game.
