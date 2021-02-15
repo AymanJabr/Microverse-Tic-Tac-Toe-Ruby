@@ -1,34 +1,44 @@
 
-
-class Board 
+class Board
+    attr_writer :playing_array
 
     def initialize()
-        @playing_array = Array.new(9){|n| n = " "}
-        puts draw_board([1,2,3,4,5,6,7,8,9])
-    
+        @playing_array = Array.new(9){|n| n = "-"}
+         draw_board
+        @available_moves = 9
     end
 
-    def draw_board(a)
+    def draw_board
 
         puts "   |   |   "
-        puts " #{a[0]} | #{a[1]} | #{a[2]} "
+        puts " #{@playing_array[0]} | #{@playing_array[1]} | #{@playing_array[2]} "
         puts "   |   |   "
         puts "-----------"
         puts "   |   |   "
-        puts " #{a[3]} | #{a[4]} | #{a[5]} "
+        puts " #{@playing_array[3]} | #{@playing_array[4]} | #{@playing_array[5]} "
         puts "   |   |   "
         puts " --------- "
         puts "   |   |   "
-        puts " #{a[6]} | #{a[7]} | #{a[8]} "
+        puts " #{@playing_array[6]} | #{@playing_array[7]} | #{@playing_array[8]} "
         puts "   |   |   "
 
     end
 
-    def update_board(player,position)
+
+    def update_board(player , position)
+
         @playing_array[position] = player
+        @available_moves -= 1
     end
+
 
 end
 
-my_board = Board.new()
+
+#get 2 - int 0 x
+
+my_board = Board.new
+my_board.update_board('x', 6)
+
+my_board.draw_board
 
