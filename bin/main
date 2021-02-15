@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
-require_relative "../lib/board.rb"
-require_relative "../lib/player.rb"
+require_relative '../lib/board'
+require_relative '../lib/player'
 
-first_board = Board.new()
+first_board = Board.new
 first_board.draw_board
-first_board.update_board('X',0)
-first_board.update_board('X',3)
-first_board.update_board('X',6)
+first_board.update_board('X', 0)
+first_board.update_board('X', 3)
+first_board.update_board('X', 6)
 puts first_board.has_player_won?('X')
 
 # puts "\n\n\nTIC-TAC-TOE Game\n\n"
@@ -44,4 +44,4 @@ puts first_board.has_player_won?('X')
 
 # # If game has ended, show score, and ask if players want to play another round, else exit game.
 
-# sally 
+# sally
