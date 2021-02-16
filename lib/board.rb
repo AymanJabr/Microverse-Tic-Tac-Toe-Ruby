@@ -28,6 +28,7 @@ class Board
   def reset_board
     @playing_array = Array.new(9) { |n| n + 1 }
     @winning_moves = []
+    @available_moves = 9
   end
 
   def change_player_turn
