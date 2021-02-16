@@ -1,47 +1,11 @@
 #!/usr/bin/env ruby
-require_relative '../lib/board'
-require_relative '../lib/player'
+require_relative '../lib/tic_tac'
 
-first_board = Board.new
-first_board.draw_board
-first_board.update_board('X', 0)
-first_board.update_board('X', 3)
-first_board.update_board('X', 6)
-puts first_board.has_player_won?('X')
+puts 'TIC TAC TOE'
+puts "  'stop' to quit the game. !! \n\n"
 
-# puts "\n\n\nTIC-TAC-TOE Game\n\n"
+game = Game.new("Choose a spot between 1-9")
 
-# puts "Current Score: \n\t\t Player X: #{some_variable}\n\t\t Player O: #{some_variable}\n\n"
-
-# puts "Turn of Player #{player} \n\n"
-
-# puts 'Choose were to place mark by selecting one of the number from 1-9, as shown below:'
-# puts '0 | 1 | 2 '
-# puts '--------- '
-# puts '3 | 4 | 5 '
-# puts '--------- '
-# puts '6 | 7 | 8 '
-
-# current_player_input = gets.chomp
-
-# puts "Player #{player} has chosen input #{current_player_input}, continue? Y/N"
-
-# player_continues = gets.chomp
-# puts "player has decided chosen #{player_continues}"
-# # if true continue, if not ask user for new input
-
-# # Check if input is valid
-
-# # Check if valid move has been made
-
-# puts 'X |   |   '
-# puts '--------- '
-# puts '  | O |   '
-# puts '--------- '
-# puts '  |   |   '
-
-# # Check if game has ended, if not restart from line 10
-
-# # If game has ended, show score, and ask if players want to play another round, else exit game.
-
-# sally
+p'------Start------'
+puts
+game.play
