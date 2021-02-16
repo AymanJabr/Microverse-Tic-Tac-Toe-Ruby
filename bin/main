@@ -2,47 +2,70 @@
 require_relative '../lib/board'
 require_relative '../lib/player'
 
-first_board = Board.new
-first_board.draw_board
-first_board.update_board('X', 0)
-first_board.update_board('X', 3)
-first_board.update_board('X', 6)
-first_board.draw_board
-puts first_board.has_player_won?('X')
+playing_board = Board.new
 
-# puts "\n\n\nTIC-TAC-TOE Game\n\n"
+puts "TIC TAC TOE\n\n\n"
 
-# puts "Current Score: \n\t\t Player X: #{some_variable}\n\t\t Player O: #{some_variable}\n\n"
+puts 'Enter first player name'
+player_one = Player.new(gets.chomp, playing_board.player_turn)
+playing_board.change_player_turn
+puts "\n\nEnter second player name"
+player_two = Player.new(gets.chomp, playing_board.player_turn)
+playing_board.change_player_turn
+# rubocop:disable Layout/LineLength
+puts "\n\n#{player_one.player_name} will be playing as #{player_one.player_tag}, and #{player_two.player_name} will be playing as #{player_two.player_tag}"
 
-# puts "Turn of Player #{player} \n\n"
+has_whole_game_ended = false
+# Start whole game loop from here
+while has_whole_game_ended == false
+  puts "\n\n\n"
+  puts "Current Scores: \n#{player_one.player_name}:#{player_one.player_score}\n#{player_two.player_name}:#{player_two.player_score}"
+  puts 'To exit game type "stop" '
 
-# puts 'Choose were to place mark by selecting one of the number from 1-9, as shown below:'
-# puts '0 | 1 | 2 '
-# puts '--------- '
-# puts '3 | 4 | 5 '
-# puts '--------- '
-# puts '6 | 7 | 8 '
+  playing_board.reset_board
 
-# current_player_input = gets.chomp
+  has_round_ended = false
+  # Start round loop from here
+  while has_round_ended == false
+    puts playing_board.draw_board
 
-# puts "Player #{player} has chosen input #{current_player_input}, continue? Y/N"
+    if playing_board.player_turn == 'X'
+      puts "#{player_one.player_name} choose a number from 1 to 9, that is not already taken, as shown in the board above."
+    else
+      puts "#{player_two.player_name} choose a number from 1 to 9, that is not already taken, as shown in the board above."
+    end
+    # rubocop:enable Layout/LineLength
 
-# player_continues = gets.chomp
-# puts "player has decided chosen #{player_continues}"
-# # if true continue, if not ask user for new input
+    choosen_move = gets.chomp
+    exit(404) if choosen_move == 'stop'
+    unless playing_board.valid_entered_character?(choosen_move)
+      puts 'Invalid character entered, please enter only a character from 1 to 9.'
+      next
+    end
+    if playing_board.position_taken?(choosen_move)
+      puts 'Position is already taken, please select an empty position'
+      next
+    end
+    choosen_move = choosen_move.to_i
+    choosen_move -= 1
+    playing_board.update_board(playing_board.player_turn, choosen_move)
+    # rubocop:disable Metrics/BlockNesting
+    if playing_board.player_won?(playing_board.player_turn)
+      if playing_board.player_turn == 'X'
+        player_one.player_score += 1
+        puts "\n\n\t\t#{player_one.player_name.upcase} HAS WON THIS ROUND"
+      else
+        player_two.player_score += 1
+        puts "\n\n\t\t#{player_two.player_name.upcase} HAS WON THIS ROUND"
+      end
+      puts "\n Winning moves: #{playing_board.output_winning_moves}"
+      has_round_ended = true
+    end
+    # rubocop:enable Metrics/BlockNesting
 
-# # Check if input is valid
+    has_round_ended = true if playing_board.game_ended?
 
-# # Check if valid move has been made
+    playing_board.change_player_turn
 
-# puts 'X |   |   '
-# puts '--------- '
-# puts '  | O |   '
-# puts '--------- '
-# puts '  |   |   '
-
-# # Check if game has ended, if not restart from line 10
-
-# # If game has ended, show score, and ask if players want to play another round, else exit game.
-
-# sally
+  end
+end

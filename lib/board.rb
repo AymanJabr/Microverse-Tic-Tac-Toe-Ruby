@@ -1,55 +1,76 @@
 class Board
-  attr_writer :playing_array
+  attr_reader :player_turn
+
+  WIN_MOVES = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [6, 4, 2],
+    [0, 4, 8]
+  ].freeze
 
   def initialize()
-    @playing_array = Array.new(9) { |n| n += 1 }
-    draw_board
+    @playing_array = Array.new(9) { |n| n + 1 }
     @available_moves = 9
+    @winning_moves = []
+    @player_turn = 'X'
   end
 
   def draw_board
+    puts "\n\n\n"
     puts '   |   |   '
     puts " #{@playing_array[0]} | #{@playing_array[1]} | #{@playing_array[2]} "
     puts '   |   |   '
-    puts '-----------'
+    puts '---+---+---'
     puts '   |   |   '
     puts " #{@playing_array[3]} | #{@playing_array[4]} | #{@playing_array[5]} "
     puts '   |   |   '
-    puts ' --------- '
+    puts ' --+---+-- '
     puts '   |   |   '
     puts " #{@playing_array[6]} | #{@playing_array[7]} | #{@playing_array[8]} "
     puts '   |   |   '
-    puts "\n\n\n\n"
+    puts "\n\n"
   end
 
-  def has_game_ended?
+  def reset_board
+    @playing_array = Array.new(9) { |n| n + 1 }
+    @winning_moves = []
+  end
+
+  def change_player_turn
+    @player_turn = if @player_turn == 'X'
+                     'O'
+                   else
+                     'X'
+                   end
+  end
+
+  def output_winning_moves
+    @winning_moves
+  end
+
+  def game_ended?
     @available_moves < 1
   end
 
-  def has_player_won?(player)
-    # check if a row is all equal
-    player_has_won = false
-    if @playing_array[0..2].all?(player.to_s) || @playing_array[3..5].all?(player.to_s) || @playing_array[6..8].all?(player.to_s)
-      player_has_won = true
+  def player_won?(player)
+    @winning_moves = WIN_MOVES.detect do |combo|
+      @playing_array[combo[0]] == @playing_array[combo[1]] &&
+        @playing_array[combo[1]] == @playing_array[combo[2]] &&
+        @playing_array[combo[0]] == player
     end
+    !@winning_moves.nil?
+  end
 
-    # check if a column is all equal
-    if @playing_array.select.with_index do |_n, i|
-         (i % 3).zero?
-       end.all?(player.to_s) || @playing_array.select.with_index do |_n, i|
-                                  i % 3 == 1
-                                end.all?(player.to_s) || @playing_array.select.with_index do |_n, i|
-                                                           (i % 3).zero?
-                                                         end.all?(player.to_s)
-      player_has_won = true
-    end
+  def valid_entered_character?(input)
+    (1..9).include?(input.to_i)
+  end
 
-    # check if a diagonal is all equal
-    if (@playing_array[0] == player.to_s && @playing_array[4] == player.to_s && @playing_array[8] == player.to_s) || (@playing_array[2] == player.to_s && @playing_array[4] == player.to_s && @playing_array[6] == player.to_s)
-      player_has_won = true
-    end
-
-    player_has_won
+  def position_taken?(input)
+    @playing_array[input.to_i - 1] == 'X' || @playing_array[input.to_i - 1] == 'O'
   end
 
   def update_board(player, position)
