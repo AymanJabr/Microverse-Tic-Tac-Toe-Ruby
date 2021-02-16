@@ -15,57 +15,46 @@ playing_board.change_player_turn
 # rubocop:disable Layout/LineLength
 puts "\n\n#{player_one.player_name} will be playing as #{player_one.player_tag}, and #{player_two.player_name} will be playing as #{player_two.player_tag}"
 
-has_whole_game_ended = false
-# Start whole game loop from here
-while has_whole_game_ended == false
-  puts "\n\n\n"
-  puts "Current Scores: \n#{player_one.player_name}:#{player_one.player_score}\n#{player_two.player_name}:#{player_two.player_score}"
-  puts 'To exit game type "stop" '
+has_round_ended = false
+# Start round loop from here
+while has_round_ended == false
+  puts playing_board.draw_board
 
-  playing_board.reset_board
-
-  has_round_ended = false
-  # Start round loop from here
-  while has_round_ended == false
-    puts playing_board.draw_board
-
-    if playing_board.player_turn == 'X'
-      puts "#{player_one.player_name} choose a number from 1 to 9, that is not already taken, as shown in the board above."
-    else
-      puts "#{player_two.player_name} choose a number from 1 to 9, that is not already taken, as shown in the board above."
-    end
-    # rubocop:enable Layout/LineLength
-
-    choosen_move = gets.chomp
-    exit(404) if choosen_move == 'stop'
-    unless playing_board.valid_entered_character?(choosen_move)
-      puts 'Invalid character entered, please enter only a character from 1 to 9.'
-      next
-    end
-    if playing_board.position_taken?(choosen_move)
-      puts 'Position is already taken, please select an empty position'
-      next
-    end
-    choosen_move = choosen_move.to_i
-    choosen_move -= 1
-    playing_board.update_board(playing_board.player_turn, choosen_move)
-    # rubocop:disable Metrics/BlockNesting
-    if playing_board.player_won?(playing_board.player_turn)
-      if playing_board.player_turn == 'X'
-        player_one.player_score += 1
-        puts "\n\n\t\t#{player_one.player_name.upcase} HAS WON THIS ROUND"
-      else
-        player_two.player_score += 1
-        puts "\n\n\t\t#{player_two.player_name.upcase} HAS WON THIS ROUND"
-      end
-      puts "\n Winning moves: #{playing_board.output_winning_moves}"
-      has_round_ended = true
-    end
-    # rubocop:enable Metrics/BlockNesting
-
-    has_round_ended = true if playing_board.game_ended?
-
-    playing_board.change_player_turn
-
+  if playing_board.player_turn == 'X'
+    puts "#{player_one.player_name} choose a number from 1 to 9, that is not already taken, as shown in the board above."
+  else
+    puts "#{player_two.player_name} choose a number from 1 to 9, that is not already taken, as shown in the board above."
   end
+  # rubocop:enable Layout/LineLength
+
+  choosen_move = gets.chomp
+  exit(404) if choosen_move == 'stop'
+  unless playing_board.valid_entered_character?(choosen_move)
+    puts 'Invalid character entered, please enter only a character from 1 to 9.'
+    next
+  end
+  if playing_board.position_taken?(choosen_move)
+    puts 'Position is already taken, please select an empty position'
+    next
+  end
+  choosen_move = choosen_move.to_i
+  choosen_move -= 1
+  playing_board.update_board(playing_board.player_turn, choosen_move)
+  if playing_board.player_won?(playing_board.player_turn)
+    if playing_board.player_turn == 'X'
+      puts "\n\n\t\t#{player_one.player_name.upcase} HAS WON THIS ROUND"
+    else
+      puts "\n\n\t\t#{player_two.player_name.upcase} HAS WON THIS ROUND"
+    end
+    puts "\n Winning moves: #{playing_board.output_winning_moves}"
+    has_round_ended = true
+  end
+  if playing_board.game_ended?
+    puts "\n\n\t\t DRAW, CONGRATULATIONS TO BOTH PLAYERS"
+    has_round_ended = true
+  end
+
+  playing_board.change_player_turn
+
 end
+exit(404)

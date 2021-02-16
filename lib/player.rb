@@ -4,7 +4,6 @@ class Player
 
   def initialize(player_name, player_tag)
     @player_name = player_name
-    @player_score = 0
     @player_tag = player_tag
   end
 end
