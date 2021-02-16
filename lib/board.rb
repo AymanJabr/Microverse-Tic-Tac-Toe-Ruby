@@ -18,22 +18,12 @@ class Board
     @winning_moves = []
     @player_turn = 'X'
   end
+  # rubocop:disable Layout/LineLength
 
   def draw_board
-    puts "\n\n\n"
-    puts '   |   |   '
-    puts " #{@playing_array[0]} | #{@playing_array[1]} | #{@playing_array[2]} "
-    puts '   |   |   '
-    puts '---+---+---'
-    puts '   |   |   '
-    puts " #{@playing_array[3]} | #{@playing_array[4]} | #{@playing_array[5]} "
-    puts '   |   |   '
-    puts ' --+---+-- '
-    puts '   |   |   '
-    puts " #{@playing_array[6]} | #{@playing_array[7]} | #{@playing_array[8]} "
-    puts '   |   |   '
-    puts "\n\n"
+    "\n\n\n   |   |   \n #{@playing_array[0]} | #{@playing_array[1]} | #{@playing_array[2]} \n   |   |   \n---+---+---\n   |   |   \n #{@playing_array[3]} | #{@playing_array[4]} | #{@playing_array[5]} \n   |   |   \n --+---+-- \n   |   |   \n #{@playing_array[6]} | #{@playing_array[7]} | #{@playing_array[8]} \n   |   |   \n\n\n"
   end
+  # rubocop:enable Layout/LineLength
 
   def reset_board
     @playing_array = Array.new(9) { |n| n + 1 }
