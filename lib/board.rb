@@ -44,7 +44,7 @@ class Board
       player_has_won = true
     end
 
-    # check if diagonals are equal
+    # check if a diagonal is all equal
     if (@playing_array[0] == player.to_s && @playing_array[4] == player.to_s && @playing_array[8] == player.to_s) || (@playing_array[2] == player.to_s && @playing_array[4] == player.to_s && @playing_array[6] == player.to_s)
       player_has_won = true
     end

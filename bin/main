@@ -7,6 +7,7 @@ first_board.draw_board
 first_board.update_board('X', 0)
 first_board.update_board('X', 3)
 first_board.update_board('X', 6)
+first_board.draw_board
 puts first_board.has_player_won?('X')
 
 # puts "\n\n\nTIC-TAC-TOE Game\n\n"
