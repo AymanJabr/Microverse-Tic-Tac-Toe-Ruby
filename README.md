@@ -7,9 +7,8 @@ Players will soon discover that the best play from both parties leads to a draw.
 
 ## How do we play Tic Tac Toe?
 
-- Run main on your terminal
 - The game is played on a grid that's 3 squares by 3 squares.
-- You are X, secound player is O. Players take turns putting their marks in empty squares.
+- You are player X, second player is O. Players take turns putting their marks in empty squares.
 - The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.
 - When all 9 squares are full, the game is over.
 
@@ -27,7 +26,7 @@ To get started with ````Tic Tac Toe```` you need to follow the intructions to be
 
 - To get a local copy up and running follow these simple example steps.
 
-- Clone this repository with git clone ```https://github.com/AymanJabr/Microverse-Tic-Tac-Toe-Ruby.git``` using your terminal or command line.
+- Clone this repository with ``` git clone https://github.com/AymanJabr/Microverse-Tic-Tac-Toe-Ruby.git``` using your terminal or command line.
 - Change to the project directory by entering :
 ```cd Microverse-Tic-Tac-Toe-Ruby``` in the terminal .
 - run the command ```bin/main```
