@@ -7,26 +7,23 @@ Players will soon discover that the best play from both parties leads to a draw.
 
 ## How do we play Tic Tac Toe?
 
-Players take turns playing: 
-- 1st turn — Player 1: 
-Player 1 places their token (X) in only 1 square of their choice
-- 2nd turn — Player 2:
- Player 2 places their token (O) in only 1 square of their choice, except they can’t touch the square that Player 1’s token already fills
-- 3rd turn- Player 1 …. and the cycle continues until a player wins or there’s a tie game
+- Run main on your terminal
+- The game is played on a grid that's 3 squares by 3 squares.
+- You are X, secound player is O. Players take turns putting their marks in empty squares.
+- The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.
+- When all 9 squares are full, the game is over.
 
-There are 8 winning combinations: Top row, Middle row, Bottom row, Left column, Middle column, Right column, Left diagonal, and Right diagonal
-There’s a draw/tie when the entire board is filled with X’s and O’s but no winning combinations can be found.
 
 ## Screenshot
 
-![Screenshot](tic.gif)
+![Screenshot](tic.png)
 
 ## Built With
  [RUBY](https://github.com/AymanJabr/Microverse-Tic-Tac-Toe-Ruby)
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally. Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.
+To get started with ````Tic Tac Toe```` you need to follow the intructions to be able to play it on your local machine.
 
 - To get a local copy up and running follow these simple example steps.
 
