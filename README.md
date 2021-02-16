@@ -22,7 +22,7 @@ Players will soon discover that the best play from both parties leads to a draw.
 
 ## Getting Started
 
-To get started with ````Tic Tac Toe```` you need to follow the intructions to be able to play it on your local machine.
+To get started with ````Tic Tac Toe```` you need to follow the instructions to be able to play it on your local machine.
 
 - To get a local copy up and running follow these simple example steps.
 
